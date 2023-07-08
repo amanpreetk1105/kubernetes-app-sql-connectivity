@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo2-deployment
+  labels:
+    app: label2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: label2-deployment
+  template:
+    metadata:
+      labels:
+        app: label2-deployment
+    spec:
+      containers:
+     
+      - name : app
+        image: amanpreetk/myapp:latest
+        ports:
+        - containerPort: 8080
+      restartPolicy: Always
+      
+      
