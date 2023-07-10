@@ -12,20 +12,25 @@ spec:
     metadata:
       labels:
         app: mysql
-    spec:
+    spec:    
       containers:
         - image: mysql
           name: mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: my-secret-pw
+              valueFrom: 
+                secretKeyRef:
+                  name: mysql-db-password
+                  key: MYSQL_ROOT_PASSWORD
           ports:
             - containerPort: 3306
               name: mysql
           volumeMounts:
+            
             - name: usermanagement-dbcreation-script
-              mountPath: /docker-entrypoint-initdb.d #https://hub.docker.com/_/mysql Refer Initializing a fresh instance                                            
+              mountPath: /docker-entrypoint-initdb.d                                  
       volumes: 
+       
         - name: usermanagement-dbcreation-script
           configMap:
             name: usermanagement-dbcreation-script
