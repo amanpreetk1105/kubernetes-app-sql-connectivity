@@ -22,7 +22,8 @@ spec:
       
         volumeMounts:
           - name: app-properties-script-volume
-            mountPath: "./"               
+            mountPath: "/tmp"
+            readOnly: true
       volumes: 
        
         - name: app-properties-script-volume
@@ -30,7 +31,7 @@ spec:
             name: app-properties-script
             items:
               - key: application.properties
-                path: ./application.properties
+                path: application.properties
         
       restartPolicy: Always
        
