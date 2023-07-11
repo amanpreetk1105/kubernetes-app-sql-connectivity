@@ -16,12 +16,15 @@ spec:
     spec:
       containers:
        - name: demo2-deployment
+         env:
+            - name: SPRING_CONFIG_LOCATION
+              value: "/root/application.properties"
          image: amanpreetk/myapp:latest
          ports:
           - containerPort: 8080
          volumeMounts:
           - name: app-properties-script-volume
-            mountPath: "/tmp"
+            mountPath: "/root/"
             readOnly: true
       volumes:
         - name: app-properties-script-volume
