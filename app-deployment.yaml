@@ -15,23 +15,18 @@ spec:
         app: label2-deployment
     spec:
       containers:
-     
-        image: amanpreetk/myapp:latest
-        ports:
+       - name: demo2-deployment
+         image: amanpreetk/myapp:latest
+         ports:
           - containerPort: 8080
-      
-        volumeMounts:
+         volumeMounts:
           - name: app-properties-script-volume
             mountPath: "/tmp"
             readOnly: true
-      volumes: 
-       
+      volumes:
         - name: app-properties-script-volume
           configMap:
             name: app-properties-script
             items:
               - key: application.properties
                 path: application.properties
-        
-      restartPolicy: Always
-       
