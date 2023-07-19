@@ -8,16 +8,28 @@ on:
 
 jobs:
 
-  build:
-
+  login:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        echo ${{ secrets.DOCKERPW }} | docker login registry-1.docker.io --username "amanpreetk" --password-stdin
-        docker image build -t amanpreetk/myapp:v1 .
-        docker push amanpreetk/myapp:v1
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: amanpreetk
+          password: ${{ secrets.DOCKERPW }}
+          
+        
+
+#   build:
+
+#     runs-on: ubuntu-latest
+
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Build the Docker image
+#       run: |
+#         echo ${{ secrets.DOCKERPW }} | docker login registry-1.docker.io --username "amanpreetk" --password-stdin
+#         docker image build -t amanpreetk/myapp:v1 .
+#         docker push amanpreetk/myapp:v1
         
    
