@@ -17,4 +17,5 @@ jobs:
     - name: Build the Docker image
       run: |
         echo "${{ secrets.DOCKERPW }}" | docker login -u "amanpreetk" --password-stdin
-        docker build . --file Dockerfile --tag amanpreetk/myapp:v1
+        docker image build -t amanpreetk/myapp:v1 .
+        docker push amanpreetk/myapp:v1
