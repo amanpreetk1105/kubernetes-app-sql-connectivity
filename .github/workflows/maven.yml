@@ -40,7 +40,7 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: amanpreetk 
-          password: my-secret-pw 
+          password: Ammy@123 
     -
         name: Build and push
         uses: docker/build-push-action@v4
