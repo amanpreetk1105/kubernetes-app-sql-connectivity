@@ -4,7 +4,7 @@ name: CI
 
 env: 
   resourceGroup: 'demo-rg'
-  kubernetesVersion: '1.19.6'
+  kubernetesVersion: '1.25.6'
   name: 'demo-aks-cluster'
 
 # Controls when the workflow will run
